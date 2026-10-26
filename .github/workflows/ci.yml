@@ -25,8 +25,10 @@ jobs:
         with:
           cache-provider: basic
           cache-read-only: ${{ github.event_name == 'pull_request' }}
-      - name: Install required Android platform
-        run: sdkmanager 'platforms;android-37' 'build-tools;37.0.0'
+      - uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
+        with:
+          packages: 'platforms;android-37 build-tools;37.0.0'
+          log-accepted-android-sdk-licenses: false
       - name: Contracts, published consumers, ABI, lint and R8 in one build
         run: bash gradlew -Pmeguviz.profile=android verifyHost verifyAndroid --build-cache --no-daemon --console=plain
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
