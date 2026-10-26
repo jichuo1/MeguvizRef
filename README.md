@@ -42,9 +42,6 @@
 dependencyResolutionManagement {
     repositories {
         mavenCentral()
-        maven("https://raw.githubusercontent.com/jichuo1/MeguvizRef/maven/") {
-            content { includeGroup("io.github.jichuo1.meguviz") }
-        }
     }
 }
 ```
@@ -58,7 +55,7 @@ dependencies {
 ```
 
 > [!NOTE]
-> 仓库无需认证，当前未发布到 Maven Central。可选模块、Maven XML 与 JitPack 配置见[安装说明](docs/installation.md)。
+> 已发布到 Maven Central。可选模块、Maven XML、GitHub 备用仓库与 JitPack 配置见[安装说明](docs/installation.md)。
 
 ## 💡 使用示例
 

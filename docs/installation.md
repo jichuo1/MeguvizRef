@@ -3,7 +3,7 @@
 要求：JDK 17；Android 模块要求 API 27 或更高版本。
 
 
-推荐使用本仓库的公开 Maven 仓库，无需令牌或登录。这里只开放本库 group，避免覆盖其他依赖来源：
+推荐从 Maven Central 获取，无需额外配置仓库：
 
 ```kotlin
 // settings.gradle.kts
@@ -11,9 +11,6 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven("https://raw.githubusercontent.com/jichuo1/MeguvizRef/maven/") {
-            content { includeGroup("io.github.jichuo1.meguviz") }
-        }
     }
 }
 ```
@@ -26,6 +23,23 @@ dependencies {
     implementation("io.github.jichuo1.meguviz:meguviz-ref-diagnostics:1.0.0")
     // 可选：Android API 27+ 辅助功能
     implementation("io.github.jichuo1.meguviz:meguviz-ref-android:1.0.0")
+}
+```
+
+## 备用来源：GitHub 托管的 Maven 仓库
+
+同样的制品也发布在本仓库的 `maven` 分支，无需令牌或登录。这里只开放本库 group，避免覆盖其他依赖来源：
+
+```kotlin
+// settings.gradle.kts
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven("https://raw.githubusercontent.com/jichuo1/MeguvizRef/maven/") {
+            content { includeGroup("io.github.jichuo1.meguviz") }
+        }
+    }
 }
 ```
 
@@ -60,8 +74,6 @@ dependencies {
     // 同组另有 meguviz-ref-diagnostics 与 meguviz-ref-android
 }
 ```
-
-此处的公开 Maven 是 GitHub 托管的标准 Maven 仓库，**不表示已发布到 Maven Central**。
 
 ## 模块选择
 

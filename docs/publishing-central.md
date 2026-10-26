@@ -39,5 +39,5 @@
 
 ## 发布后
 
-- 把 README 与 [安装说明](installation.md) 中"未发布到 Maven Central"的说明改掉，保留 `maven` 分支作为备用来源。
+- 保留 `maven` 分支作为备用来源。
 - 验证：新建空项目，只配置 `mavenCentral()`，解析 `io.github.jichuo1.meguviz:meguviz-ref-core:<版本>`。
