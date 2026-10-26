@@ -44,6 +44,7 @@ dependencies {
 }
 dependencyLocking { lockAllConfigurations() }
 tasks.register("releaseDependencyReport") {
+    dependsOn(":publishLocal")
     val output = layout.buildDirectory.file("releaseRuntimeClasspath.txt")
     outputs.file(output)
     doLast {
