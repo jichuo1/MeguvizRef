@@ -1,7 +1,10 @@
 import org.gradle.api.tasks.GradleBuild
 import org.gradle.api.publish.maven.MavenPublication
+import org.gradle.plugins.signing.SigningExtension
 
 plugins { base }
+val centralRelease = providers.gradleProperty("meguviz.central").isPresent
+val centralStaging = layout.buildDirectory.dir("central-staging")
 allprojects {
     group = "io.github.jichuo1.meguviz"
     version = providers.gradleProperty("meguviz.version").get()
@@ -26,8 +29,20 @@ allprojects {
                     }
                 }
             }
+            if (centralRelease) repositories { maven { name = "central"; url = centralStaging.get().asFile.toURI() } }
+        }
+        if (centralRelease) {
+            pluginManager.apply("signing")
+            extensions.configure<SigningExtension> {
+                useGpgCmd()
+                sign(extensions.getByType<PublishingExtension>().publications)
+            }
         }
     }
+    plugins.withId("java-library") {
+        if (centralRelease) extensions.configure<JavaPluginExtension> { withJavadocJar() }
+    }
+    tasks.configureEach { if (name == "publishAllPublicationsToCentralRepository") mustRunAfter(":centralClean") }
 }
 val python = providers.gradleProperty("meguviz.python").orElse("python")
 val profile = providers.gradleProperty("meguviz.profile").orElse("host")
@@ -69,4 +84,14 @@ tasks.register<Exec>("packageRelease") {
     group = "distribution"
     dependsOn("verifyHost", "verifyAndroid", publishLocal)
     commandLine(python.get(), "tools/package_release.py", "--version", version.toString())
+}
+val centralClean = tasks.register<Delete>("centralClean") { delete(centralStaging) }
+tasks.register<Zip>("centralBundle") {
+    group = "publishing"
+    description = "Signed bundle for manual upload to the Central Portal; requires -Pmeguviz.central=true"
+    dependsOn(centralClean, ":ref-core:publishAllPublicationsToCentralRepository", ":ref-diagnostics:publishAllPublicationsToCentralRepository")
+    if (profile.get() == "android") dependsOn(":ref-android:publishAllPublicationsToCentralRepository")
+    from(centralStaging)
+    archiveFileName.set("meguviz-ref-$version-central.zip")
+    destinationDirectory.set(layout.buildDirectory.dir("central"))
 }

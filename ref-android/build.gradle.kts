@@ -5,7 +5,7 @@ android {
     enableKotlin = false
     defaultConfig { minSdk = 27; consumerProguardFiles("consumer-rules.pro") }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
-    publishing { singleVariant("release") { withSourcesJar() } }
+    publishing { singleVariant("release") { withSourcesJar(); if (providers.gradleProperty("meguviz.central").isPresent) withJavadocJar() } }
     packaging.resources.excludes.removeAll(setOf("/META-INF/LICENSE", "/META-INF/NOTICE"))
 }
 dependencies { api(project(":ref-core")) }
