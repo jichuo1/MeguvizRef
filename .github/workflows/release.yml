@@ -17,7 +17,9 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - uses: gradle/actions/setup-gradle@0b6dd653ba04f4f93bf581ec31e66cbd7dcb644d # v4
+      - uses: gradle/actions/setup-gradle@07d1f8453baaff67fb503883367f8b13e6158a54 # v6
+        with:
+          cache-provider: basic
       - name: Verify release identity
         shell: bash
         run: |
@@ -25,7 +27,7 @@ jobs:
           test "$GITHUB_REF_NAME" = "$version"
           test "$version" = "$(printf '%s' "$version" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$')"
       - name: Install required Android platform
-        run: sdkmanager 'platforms;android-37' 'build-tools;36.0.0'
+        run: sdkmanager 'platforms;android-37' 'build-tools;37.0.0'
       - name: Verify and package once
         run: bash gradlew -Pmeguviz.profile=android packageRelease --build-cache --no-daemon --console=plain
       - name: Publish same tested bytes to Maven and GitHub Release

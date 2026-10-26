@@ -2,6 +2,6 @@ jdk:
   - openjdk17
 before_install:
   - yes | sdkmanager --licenses > /dev/null || true
-  - sdkmanager "platforms;android-37" "build-tools;36.0.0"
+  - sdkmanager "platforms;android-37" "build-tools;37.0.0"
 install:
   - bash gradlew -Pmeguviz.profile=android :ref-core:contractTests :ref-diagnostics:contractTests :ref-core:publishToMavenLocal :ref-diagnostics:publishToMavenLocal :ref-android:publishToMavenLocal --build-cache --no-daemon --console=plain

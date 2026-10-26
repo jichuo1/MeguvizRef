@@ -44,10 +44,12 @@ dependencies {
 }
 dependencyLocking { lockAllConfigurations() }
 tasks.register("releaseDependencyReport") {
+    val output = layout.buildDirectory.file("releaseRuntimeClasspath.txt")
+    outputs.file(output)
     doLast {
         val report = configurations.getByName("releaseRuntimeClasspath").incoming.resolutionResult.allComponents
             .map { it.id.displayName }.sorted().joinToString("\n")
-        layout.buildDirectory.file("releaseRuntimeClasspath.txt").get().asFile.writeText(report + "\n")
+        output.get().asFile.apply { parentFile.mkdirs(); writeText(report + "\n") }
     }
 }
 tasks.configureEach {

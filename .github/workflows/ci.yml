@@ -21,11 +21,12 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - uses: gradle/actions/setup-gradle@0b6dd653ba04f4f93bf581ec31e66cbd7dcb644d # v4
+      - uses: gradle/actions/setup-gradle@07d1f8453baaff67fb503883367f8b13e6158a54 # v6
         with:
+          cache-provider: basic
           cache-read-only: ${{ github.event_name == 'pull_request' }}
       - name: Install required Android platform
-        run: sdkmanager 'platforms;android-37' 'build-tools;36.0.0'
+        run: sdkmanager 'platforms;android-37' 'build-tools;37.0.0'
       - name: Contracts, published consumers, ABI, lint and R8 in one build
         run: bash gradlew -Pmeguviz.profile=android verifyHost verifyAndroid --build-cache --no-daemon --console=plain
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
