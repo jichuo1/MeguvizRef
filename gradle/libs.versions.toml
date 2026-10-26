@@ -1,0 +1,11 @@
+[versions]
+gradle = "9.8.2"
+agp = "9.4.1"
+kotlin = "2.4.21"
+java = "17"
+compileSdk = "37"
+minSdk = "27"
+
+[plugins]
+android-library = { id = "com.android.library", version.ref = "agp" }
+android-application = { id = "com.android.application", version.ref = "agp" }

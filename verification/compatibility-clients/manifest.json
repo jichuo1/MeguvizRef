@@ -1,0 +1,9 @@
+{
+  "version": "0.1.0-SNAPSHOT",
+  "java_client_sha256": "d8b276a16cdc2715b1dda46699bada2ea017ae2e853885d339a82950b8484479",
+  "kotlin_client_sha256": "fbe9a691103ecffa99d2eeb9930c40f2647e7ef34de5c922bd39f147c39df811",
+  "api_major": 0,
+  "spi_major": 1,
+  "persistent_schema_major": 1,
+  "generated_abi": "not_applicable_no_generator"
+}

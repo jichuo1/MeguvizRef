@@ -1,0 +1,335 @@
+Compiled from "MemberDescriptor.java"
+public final class io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor {
+  public static io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor method(java.lang.String, java.lang.String, java.lang.String, java.lang.String...);
+  public static io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor field(java.lang.String, java.lang.String, java.lang.String);
+  public static io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor constructor(java.lang.String, java.lang.String...);
+  public static io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor create(io.github.jichuo1.meguviz.ref.api.descriptor.MemberKind, java.lang.String, java.lang.String, java.lang.String, java.lang.String...);
+  public static io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor from(java.lang.reflect.Member);
+  public io.github.jichuo1.meguviz.ref.api.descriptor.MemberKind kind();
+  public java.lang.String owner();
+  public java.lang.String name();
+  public java.util.List<io.github.jichuo1.meguviz.ref.api.descriptor.TypeDescriptor> parameters();
+  public io.github.jichuo1.meguviz.ref.api.descriptor.TypeDescriptor type();
+  public java.lang.String signature();
+  public boolean equals(java.lang.Object);
+  public int hashCode();
+  public java.lang.String toString();
+}
+Compiled from "MemberKind.java"
+public final class io.github.jichuo1.meguviz.ref.api.descriptor.MemberKind extends java.lang.Enum<io.github.jichuo1.meguviz.ref.api.descriptor.MemberKind> {
+  public static final io.github.jichuo1.meguviz.ref.api.descriptor.MemberKind METHOD;
+  public static final io.github.jichuo1.meguviz.ref.api.descriptor.MemberKind FIELD;
+  public static final io.github.jichuo1.meguviz.ref.api.descriptor.MemberKind CONSTRUCTOR;
+  public static io.github.jichuo1.meguviz.ref.api.descriptor.MemberKind[] values();
+  public static io.github.jichuo1.meguviz.ref.api.descriptor.MemberKind valueOf(java.lang.String);
+}
+Compiled from "TypeDescriptor.java"
+public final class io.github.jichuo1.meguviz.ref.api.descriptor.TypeDescriptor {
+  public static io.github.jichuo1.meguviz.ref.api.descriptor.TypeDescriptor of(java.lang.String);
+  public static io.github.jichuo1.meguviz.ref.api.descriptor.TypeDescriptor fromClass(java.lang.Class<?>);
+  public java.lang.String value();
+  public boolean isVoid();
+  public java.lang.Class<?> resolve(java.lang.ClassLoader) throws java.lang.ClassNotFoundException;
+  public boolean equals(java.lang.Object);
+  public int hashCode();
+  public java.lang.String toString();
+}
+Compiled from "CodeIdentity.java"
+public final class io.github.jichuo1.meguviz.ref.api.evidence.CodeIdentity {
+  public static io.github.jichuo1.meguviz.ref.api.evidence.CodeIdentity strong(java.util.Map<java.lang.String, java.lang.String>, java.lang.String, java.lang.String);
+  public static io.github.jichuo1.meguviz.ref.api.evidence.CodeIdentity weak(java.util.Map<java.lang.String, java.lang.String>, java.lang.String, java.lang.String);
+  public static io.github.jichuo1.meguviz.ref.api.evidence.CodeIdentity unverified(java.lang.String, java.lang.String);
+  public io.github.jichuo1.meguviz.ref.api.evidence.CodeIdentity$Strength strength();
+  public java.util.SortedMap<java.lang.String, java.lang.String> artifacts();
+  public java.lang.String loadingConfiguration();
+  public java.lang.String ruleVersion();
+  public java.lang.String fingerprint();
+  public boolean matchesStrong(io.github.jichuo1.meguviz.ref.api.evidence.CodeIdentity);
+}
+Compiled from "CodeIdentity.java"
+public final class io.github.jichuo1.meguviz.ref.api.evidence.CodeIdentity$Strength extends java.lang.Enum<io.github.jichuo1.meguviz.ref.api.evidence.CodeIdentity$Strength> {
+  public static final io.github.jichuo1.meguviz.ref.api.evidence.CodeIdentity$Strength STRONG;
+  public static final io.github.jichuo1.meguviz.ref.api.evidence.CodeIdentity$Strength WEAK;
+  public static final io.github.jichuo1.meguviz.ref.api.evidence.CodeIdentity$Strength UNVERIFIED;
+  public static io.github.jichuo1.meguviz.ref.api.evidence.CodeIdentity$Strength[] values();
+  public static io.github.jichuo1.meguviz.ref.api.evidence.CodeIdentity$Strength valueOf(java.lang.String);
+}
+Compiled from "ResolutionReceipt.java"
+public final class io.github.jichuo1.meguviz.ref.api.evidence.ResolutionReceipt {
+  public static final int SCHEMA_MAJOR;
+  public io.github.jichuo1.meguviz.ref.api.evidence.ResolutionReceipt(java.lang.String, io.github.jichuo1.meguviz.ref.api.query.Selection, io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus, io.github.jichuo1.meguviz.ref.api.result.Coverage, java.util.List<io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor>, java.lang.String, java.lang.String);
+  public java.lang.String querySummary();
+  public io.github.jichuo1.meguviz.ref.api.query.Selection selection();
+  public io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus status();
+  public io.github.jichuo1.meguviz.ref.api.result.Coverage coverage();
+  public java.util.List<io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor> descriptors();
+  public java.lang.String reason();
+  public java.lang.String causeType();
+}
+Compiled from "AccessPolicy.java"
+public final class io.github.jichuo1.meguviz.ref.api.query.AccessPolicy extends java.lang.Enum<io.github.jichuo1.meguviz.ref.api.query.AccessPolicy> {
+  public static final io.github.jichuo1.meguviz.ref.api.query.AccessPolicy PRESERVE_JAVA_ACCESS;
+  public static final io.github.jichuo1.meguviz.ref.api.query.AccessPolicy TRY_SUPPRESS_JAVA_CHECKS;
+  public static io.github.jichuo1.meguviz.ref.api.query.AccessPolicy[] values();
+  public static io.github.jichuo1.meguviz.ref.api.query.AccessPolicy valueOf(java.lang.String);
+}
+Compiled from "CompatibilityPolicy.java"
+public final class io.github.jichuo1.meguviz.ref.api.query.CompatibilityPolicy extends java.lang.Enum<io.github.jichuo1.meguviz.ref.api.query.CompatibilityPolicy> {
+  public static final io.github.jichuo1.meguviz.ref.api.query.CompatibilityPolicy LEGACY_BIL;
+  public static final io.github.jichuo1.meguviz.ref.api.query.CompatibilityPolicy JAVA_INVOCATION;
+  public static io.github.jichuo1.meguviz.ref.api.query.CompatibilityPolicy[] values();
+  public static io.github.jichuo1.meguviz.ref.api.query.CompatibilityPolicy valueOf(java.lang.String);
+  public boolean accepts(java.lang.Class<?>, java.lang.Class<?>);
+  public static java.lang.Class<?> boxed(java.lang.Class<?>);
+}
+Compiled from "Hierarchy.java"
+public final class io.github.jichuo1.meguviz.ref.api.query.Hierarchy extends java.lang.Enum<io.github.jichuo1.meguviz.ref.api.query.Hierarchy> {
+  public static final io.github.jichuo1.meguviz.ref.api.query.Hierarchy DECLARED;
+  public static final io.github.jichuo1.meguviz.ref.api.query.Hierarchy SUPERCLASSES;
+  public static final io.github.jichuo1.meguviz.ref.api.query.Hierarchy JAVA_PUBLIC;
+  public static io.github.jichuo1.meguviz.ref.api.query.Hierarchy[] values();
+  public static io.github.jichuo1.meguviz.ref.api.query.Hierarchy valueOf(java.lang.String);
+}
+Compiled from "QuerySpec.java"
+public final class io.github.jichuo1.meguviz.ref.api.query.QuerySpec {
+  public static final int SCHEMA_MAJOR;
+  public static final java.lang.String RULE_VERSION;
+  public static io.github.jichuo1.meguviz.ref.api.query.QuerySpec exact(io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor);
+  public static io.github.jichuo1.meguviz.ref.api.query.QuerySpec$Builder builder(java.lang.Class<?>, io.github.jichuo1.meguviz.ref.api.descriptor.MemberKind);
+  public static io.github.jichuo1.meguviz.ref.api.query.QuerySpec$Builder builder(java.lang.String, io.github.jichuo1.meguviz.ref.api.descriptor.MemberKind);
+  public java.lang.String owner();
+  public java.lang.String name();
+  public java.lang.Class<?> runtimeOwner();
+  public io.github.jichuo1.meguviz.ref.api.descriptor.MemberKind kind();
+  public io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor exactDescriptor();
+  public io.github.jichuo1.meguviz.ref.api.query.Hierarchy hierarchy();
+  public io.github.jichuo1.meguviz.ref.api.query.Selection selection();
+  public io.github.jichuo1.meguviz.ref.api.query.CompatibilityPolicy compatibility();
+  public java.lang.Boolean staticOnly();
+  public java.lang.Boolean bridge();
+  public java.lang.Boolean synthetic();
+  public int parameterCount();
+  public int candidateBudget();
+  public int resultLimit();
+  public int depthLimit();
+  public java.lang.String providerId();
+  public java.lang.Class<?>[] parameterClasses();
+  public java.lang.Class<?>[] argumentClasses();
+  public java.lang.Class<?> returnClass();
+  public boolean portable();
+  public java.lang.String summary();
+  public boolean equals(java.lang.Object);
+  public int hashCode();
+}
+Compiled from "QuerySpec.java"
+public final class io.github.jichuo1.meguviz.ref.api.query.QuerySpec$Builder {
+  public io.github.jichuo1.meguviz.ref.api.query.QuerySpec$Builder name(java.lang.String);
+  public io.github.jichuo1.meguviz.ref.api.query.QuerySpec$Builder parameters(java.lang.Class<?>...);
+  public io.github.jichuo1.meguviz.ref.api.query.QuerySpec$Builder arguments(io.github.jichuo1.meguviz.ref.api.query.CompatibilityPolicy, java.lang.Object...);
+  public io.github.jichuo1.meguviz.ref.api.query.QuerySpec$Builder returns(java.lang.Class<?>);
+  public io.github.jichuo1.meguviz.ref.api.query.QuerySpec$Builder hierarchy(io.github.jichuo1.meguviz.ref.api.query.Hierarchy);
+  public io.github.jichuo1.meguviz.ref.api.query.QuerySpec$Builder selection(io.github.jichuo1.meguviz.ref.api.query.Selection);
+  public io.github.jichuo1.meguviz.ref.api.query.QuerySpec$Builder staticOnly(boolean);
+  public io.github.jichuo1.meguviz.ref.api.query.QuerySpec$Builder bridge(boolean);
+  public io.github.jichuo1.meguviz.ref.api.query.QuerySpec$Builder synthetic(boolean);
+  public io.github.jichuo1.meguviz.ref.api.query.QuerySpec$Builder parameterCount(int);
+  public io.github.jichuo1.meguviz.ref.api.query.QuerySpec$Builder candidateBudget(int);
+  public io.github.jichuo1.meguviz.ref.api.query.QuerySpec$Builder resultLimit(int);
+  public io.github.jichuo1.meguviz.ref.api.query.QuerySpec$Builder depthLimit(int);
+  public io.github.jichuo1.meguviz.ref.api.query.QuerySpec$Builder provider(java.lang.String);
+  public io.github.jichuo1.meguviz.ref.api.query.QuerySpec build();
+}
+Compiled from "Selection.java"
+public final class io.github.jichuo1.meguviz.ref.api.query.Selection extends java.lang.Enum<io.github.jichuo1.meguviz.ref.api.query.Selection> {
+  public static final io.github.jichuo1.meguviz.ref.api.query.Selection EXACT;
+  public static final io.github.jichuo1.meguviz.ref.api.query.Selection FIRST;
+  public static final io.github.jichuo1.meguviz.ref.api.query.Selection UNIQUE;
+  public static final io.github.jichuo1.meguviz.ref.api.query.Selection ALL;
+  public static io.github.jichuo1.meguviz.ref.api.query.Selection[] values();
+  public static io.github.jichuo1.meguviz.ref.api.query.Selection valueOf(java.lang.String);
+}
+Compiled from "Coverage.java"
+public final class io.github.jichuo1.meguviz.ref.api.result.Coverage {
+  public io.github.jichuo1.meguviz.ref.api.result.Coverage(java.lang.String, boolean, int, java.lang.String);
+  public java.lang.String universe();
+  public boolean complete();
+  public int inspected();
+  public java.lang.String reason();
+}
+Compiled from "ResolutionException.java"
+public final class io.github.jichuo1.meguviz.ref.api.result.ResolutionException extends java.lang.IllegalStateException {
+  public io.github.jichuo1.meguviz.ref.api.result.ResolutionException(io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus, java.lang.String);
+  public io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus status();
+}
+Compiled from "ResolutionResult.java"
+public final class io.github.jichuo1.meguviz.ref.api.result.ResolutionResult {
+  public io.github.jichuo1.meguviz.ref.api.result.ResolutionResult(io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus, java.util.List<io.github.jichuo1.meguviz.ref.api.result.ResolvedMember>, io.github.jichuo1.meguviz.ref.api.evidence.ResolutionReceipt);
+  public io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus status();
+  public java.util.List<io.github.jichuo1.meguviz.ref.api.result.ResolvedMember> members();
+  public io.github.jichuo1.meguviz.ref.api.evidence.ResolutionReceipt receipt();
+  public io.github.jichuo1.meguviz.ref.api.result.ResolvedMember requireSingle();
+}
+Compiled from "ResolutionStatus.java"
+public final class io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus extends java.lang.Enum<io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus> {
+  public static final io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus RESOLVED;
+  public static final io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus ALL_MATCHES;
+  public static final io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus AMBIGUOUS;
+  public static final io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus NOT_FOUND_IN_VISIBLE_UNIVERSE;
+  public static final io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus UNAVAILABLE;
+  public static final io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus PARTIAL;
+  public static final io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus CANCELLED;
+  public static final io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus ACCESS_DENIED;
+  public static final io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus STALE;
+  public static io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus[] values();
+  public static io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus valueOf(java.lang.String);
+}
+Compiled from "ResolvedMember.java"
+public final class io.github.jichuo1.meguviz.ref.api.result.ResolvedMember {
+  public io.github.jichuo1.meguviz.ref.api.result.ResolvedMember(java.lang.String, long, long, io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor);
+  public java.lang.String scopeId();
+  public long codeEpoch();
+  public long slot();
+  public io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor descriptor();
+}
+Compiled from "ConstructorPlan.java"
+public final class io.github.jichuo1.meguviz.ref.runtime.invoke.ConstructorPlan {
+  public io.github.jichuo1.meguviz.ref.runtime.invoke.ConstructorPlan(io.github.jichuo1.meguviz.ref.scope.CodeScope, io.github.jichuo1.meguviz.ref.api.result.ResolvedMember);
+  public io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor descriptor();
+  public java.lang.Object newInstance(java.lang.Object[]) throws java.lang.IllegalAccessException, java.lang.reflect.InvocationTargetException, java.lang.InstantiationException;
+}
+Compiled from "FieldPlan.java"
+public final class io.github.jichuo1.meguviz.ref.runtime.invoke.FieldPlan {
+  public io.github.jichuo1.meguviz.ref.runtime.invoke.FieldPlan(io.github.jichuo1.meguviz.ref.scope.CodeScope, io.github.jichuo1.meguviz.ref.api.result.ResolvedMember);
+  public io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor descriptor();
+  public java.lang.Object get(java.lang.Object) throws java.lang.IllegalAccessException;
+  public void set(java.lang.Object, java.lang.Object) throws java.lang.IllegalAccessException;
+}
+Compiled from "MethodPlan.java"
+public final class io.github.jichuo1.meguviz.ref.runtime.invoke.MethodPlan {
+  public io.github.jichuo1.meguviz.ref.runtime.invoke.MethodPlan(io.github.jichuo1.meguviz.ref.scope.CodeScope, io.github.jichuo1.meguviz.ref.api.result.ResolvedMember);
+  public io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor descriptor();
+  public java.lang.Object invoke(java.lang.Object, java.lang.Object[]) throws java.lang.IllegalAccessException, java.lang.reflect.InvocationTargetException;
+}
+Compiled from "StalePlanException.java"
+public final class io.github.jichuo1.meguviz.ref.runtime.invoke.StalePlanException extends java.lang.IllegalStateException {
+  public io.github.jichuo1.meguviz.ref.runtime.invoke.StalePlanException(java.lang.String);
+}
+Compiled from "MethodSchema.java"
+public final class io.github.jichuo1.meguviz.ref.runtime.resolve.MethodSchema {
+  public io.github.jichuo1.meguviz.ref.runtime.resolve.MethodSchema(java.lang.reflect.Member);
+  public java.lang.Class<?>[] parameterTypes();
+  public java.lang.Class<?> type();
+  public io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor descriptor();
+  public java.lang.reflect.Member rawMember();
+}
+Compiled from "QueryCoordinator.java"
+public final class io.github.jichuo1.meguviz.ref.runtime.resolve.QueryCoordinator<K, V> {
+  public io.github.jichuo1.meguviz.ref.runtime.resolve.QueryCoordinator(int);
+  public V execute(K, java.util.function.Supplier<V>, long) throws java.lang.InterruptedException, java.util.concurrent.TimeoutException;
+  public synchronized void close();
+}
+Compiled from "ReflectionResolver.java"
+public final class io.github.jichuo1.meguviz.ref.runtime.resolve.ReflectionResolver {
+  public io.github.jichuo1.meguviz.ref.runtime.resolve.ReflectionResolver(int);
+  public long parameterReads();
+  public long candidateChecks();
+  public long lookups();
+  public synchronized int schemaSize();
+  public synchronized void clear();
+  public io.github.jichuo1.meguviz.ref.runtime.resolve.ReflectionResolver$Outcome resolve(io.github.jichuo1.meguviz.ref.api.query.QuerySpec, java.lang.ClassLoader, io.github.jichuo1.meguviz.ref.spi.ProviderRegistry, java.lang.String);
+}
+Compiled from "ReflectionResolver.java"
+public final class io.github.jichuo1.meguviz.ref.runtime.resolve.ReflectionResolver$Entry {
+  public final java.lang.reflect.Member member;
+  public final io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor descriptor;
+  public io.github.jichuo1.meguviz.ref.runtime.resolve.ReflectionResolver$Entry(java.lang.reflect.Member, io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor);
+}
+Compiled from "ReflectionResolver.java"
+public final class io.github.jichuo1.meguviz.ref.runtime.resolve.ReflectionResolver$Outcome {
+  public final io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus status;
+  public final java.util.List<io.github.jichuo1.meguviz.ref.runtime.resolve.ReflectionResolver$Entry> entries;
+  public final io.github.jichuo1.meguviz.ref.api.result.Coverage coverage;
+  public final java.lang.String reason;
+  public final java.lang.String cause;
+  public io.github.jichuo1.meguviz.ref.runtime.resolve.ReflectionResolver$Outcome(io.github.jichuo1.meguviz.ref.api.result.ResolutionStatus, java.util.List<io.github.jichuo1.meguviz.ref.runtime.resolve.ReflectionResolver$Entry>, io.github.jichuo1.meguviz.ref.api.result.Coverage, java.lang.String, java.lang.String);
+}
+Compiled from "CodeScope.java"
+public final class io.github.jichuo1.meguviz.ref.scope.CodeScope implements java.lang.AutoCloseable {
+  public static io.github.jichuo1.meguviz.ref.scope.CodeScope open(java.lang.ClassLoader);
+  public static io.github.jichuo1.meguviz.ref.scope.CodeScope open(java.lang.ClassLoader, io.github.jichuo1.meguviz.ref.api.query.AccessPolicy, int);
+  public io.github.jichuo1.meguviz.ref.api.query.AccessPolicy accessPolicy();
+  public boolean usesLoader(java.lang.ClassLoader);
+  public io.github.jichuo1.meguviz.ref.scope.CodeScope$State state();
+  public long codeEpoch();
+  public java.lang.String identity();
+  public java.lang.String closeFailureType();
+  public void installProviders(io.github.jichuo1.meguviz.ref.spi.ProviderRegistry, io.github.jichuo1.meguviz.ref.api.evidence.CodeIdentity);
+  public io.github.jichuo1.meguviz.ref.api.result.ResolutionResult resolve(io.github.jichuo1.meguviz.ref.api.query.QuerySpec);
+  public io.github.jichuo1.meguviz.ref.runtime.invoke.MethodPlan bindMethod(io.github.jichuo1.meguviz.ref.api.result.ResolvedMember) throws java.lang.IllegalAccessException;
+  public io.github.jichuo1.meguviz.ref.runtime.invoke.FieldPlan bindField(io.github.jichuo1.meguviz.ref.api.result.ResolvedMember) throws java.lang.IllegalAccessException;
+  public io.github.jichuo1.meguviz.ref.runtime.invoke.ConstructorPlan bindConstructor(io.github.jichuo1.meguviz.ref.api.result.ResolvedMember) throws java.lang.IllegalAccessException;
+  public java.lang.reflect.Member exportRaw(io.github.jichuo1.meguviz.ref.api.result.ResolvedMember) throws java.lang.IllegalAccessException;
+  public java.lang.Object invokeMethod(io.github.jichuo1.meguviz.ref.api.result.ResolvedMember, java.lang.Object, java.lang.Object[]) throws java.lang.IllegalAccessException, java.lang.reflect.InvocationTargetException;
+  public java.lang.Object getField(io.github.jichuo1.meguviz.ref.api.result.ResolvedMember, java.lang.Object) throws java.lang.IllegalAccessException;
+  public void setField(io.github.jichuo1.meguviz.ref.api.result.ResolvedMember, java.lang.Object, java.lang.Object) throws java.lang.IllegalAccessException;
+  public java.lang.Object construct(io.github.jichuo1.meguviz.ref.api.result.ResolvedMember, java.lang.Object[]) throws java.lang.IllegalAccessException, java.lang.reflect.InvocationTargetException, java.lang.InstantiationException;
+  public void advanceCodeEpoch(java.lang.String);
+  public java.util.Map<java.lang.String, java.lang.Long> diagnostics();
+  public void close();
+}
+Compiled from "CodeScope.java"
+public final class io.github.jichuo1.meguviz.ref.scope.CodeScope$State extends java.lang.Enum<io.github.jichuo1.meguviz.ref.scope.CodeScope$State> {
+  public static final io.github.jichuo1.meguviz.ref.scope.CodeScope$State OPEN;
+  public static final io.github.jichuo1.meguviz.ref.scope.CodeScope$State RETIRING;
+  public static final io.github.jichuo1.meguviz.ref.scope.CodeScope$State CLOSED;
+  public static io.github.jichuo1.meguviz.ref.scope.CodeScope$State[] values();
+  public static io.github.jichuo1.meguviz.ref.scope.CodeScope$State valueOf(java.lang.String);
+}
+Compiled from "CandidateBatch.java"
+public final class io.github.jichuo1.meguviz.ref.spi.CandidateBatch {
+  public io.github.jichuo1.meguviz.ref.spi.CandidateBatch(java.util.List<io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor>, java.lang.String, java.lang.String, boolean);
+  public java.util.List<io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor> candidates();
+  public java.lang.String codeFingerprint();
+  public java.lang.String universe();
+  public boolean complete();
+}
+Compiled from "CandidateProvider.java"
+public interface io.github.jichuo1.meguviz.ref.spi.CandidateProvider extends java.lang.AutoCloseable {
+  public abstract io.github.jichuo1.meguviz.ref.spi.ProviderDescriptor descriptor();
+  public abstract io.github.jichuo1.meguviz.ref.spi.CandidateBatch discover(io.github.jichuo1.meguviz.ref.spi.CandidateRequest) throws java.lang.Exception;
+  public abstract void close();
+}
+Compiled from "CandidateRequest.java"
+public final class io.github.jichuo1.meguviz.ref.spi.CandidateRequest {
+  public io.github.jichuo1.meguviz.ref.spi.CandidateRequest(io.github.jichuo1.meguviz.ref.api.query.QuerySpec, java.lang.String);
+  public io.github.jichuo1.meguviz.ref.api.query.QuerySpec query();
+  public java.lang.String codeFingerprint();
+  public int candidateBudget();
+  public boolean isCancelled();
+}
+Compiled from "ProviderDescriptor.java"
+public final class io.github.jichuo1.meguviz.ref.spi.ProviderDescriptor {
+  public io.github.jichuo1.meguviz.ref.spi.ProviderDescriptor(java.lang.String, java.lang.String, int, int, java.lang.String, java.util.List<java.lang.String>);
+  public java.lang.String id();
+  public java.lang.String implementationVersion();
+  public int spiMajor();
+  public int spiMinor();
+  public java.lang.String exclusiveCapability();
+  public java.util.List<java.lang.String> dependencies();
+  public java.lang.String threadConstraint();
+  public java.lang.String closeOwner();
+}
+Compiled from "ProviderRegistry.java"
+public final class io.github.jichuo1.meguviz.ref.spi.ProviderRegistry implements java.lang.AutoCloseable {
+  public static io.github.jichuo1.meguviz.ref.spi.ProviderRegistry create(java.util.Collection<? extends io.github.jichuo1.meguviz.ref.spi.CandidateProvider>);
+  public static io.github.jichuo1.meguviz.ref.spi.ProviderRegistry create(java.util.Collection<? extends io.github.jichuo1.meguviz.ref.spi.CandidateProvider>, java.util.Map<java.lang.String, java.lang.String>);
+  public synchronized void claim();
+  public synchronized io.github.jichuo1.meguviz.ref.spi.CandidateProvider provider(java.lang.String);
+  public java.util.List<java.lang.String> installationOrder();
+  public void close();
+}
+Compiled from "ReceiptStore.java"
+public interface io.github.jichuo1.meguviz.ref.spi.ReceiptStore {
+  public abstract java.util.Optional<byte[]> read(java.lang.String) throws java.io.IOException;
+  public abstract void write(java.lang.String, byte[]) throws java.io.IOException;
+}

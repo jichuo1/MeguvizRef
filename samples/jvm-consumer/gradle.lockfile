@@ -1,0 +1,6 @@
+# This is a Gradle generated file for dependency locking.
+# Manual edits can break the build and are not advised.
+# This file is expected to be part of source control.
+# To regenerate this file, run: ./gradlew :jvm-consumer:dependencies --write-locks
+io.github.jichuo1.meguviz:meguviz-ref-core:1.0.0=compileClasspath,runtimeClasspath
+empty=annotationProcessor

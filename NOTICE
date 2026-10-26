@@ -1,0 +1,9 @@
+MeguvizRef
+Copyright 2026 jichuo1
+
+This project includes the Gradle Wrapper, copyright its original authors,
+distributed under the Apache License, Version 2.0.
+
+KavaRef is referenced only as an isolated Android instrumentation benchmark
+dependency. It is not embedded in, or a runtime dependency of, the published
+MeguvizRef core, diagnostics, or Android library artifacts.

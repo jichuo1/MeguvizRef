@@ -1,0 +1,27 @@
+{
+  "fixture_classpath": "excluded from parent classpath; URLClassLoader parent=null",
+  "schema_major": 1,
+  "entries": [
+    {
+      "sha256": "8642d2b75b84f3cd935e8020a6edb4ee8e42a34f90df8a77c9fd9b3009f1979e",
+      "path": "test-fixtures/isolated-src/fixture/LoaderFixture.java"
+    },
+    {
+      "sha256": "b99fadd61833d583b528814ae89089519b1a802c6dc610cecc6eabacd10d82a9",
+      "path": "test-fixtures/isolated-src/fixture/MissingType.java"
+    },
+    {
+      "sha256": "81368ef3802ebf7de2299643f59b79963a817291fa6917ee8100149d5dd5e3f8",
+      "path": "test-fixtures/isolated-src/fixture/MissingSignatureFixture.java"
+    },
+    {
+      "sha256": "f37982733c1a998ed58120d53ca2b8969adb1a62796d4fa4c64020809f7d0f8b",
+      "path": "ref-core/build/isolated-fixtures/complete-fixture.jar"
+    },
+    {
+      "sha256": "d3c1f3f2d98b3257c7fa2ede9e0edf667e8d087bfcff2048e542ceba94269fc2",
+      "path": "ref-core/build/isolated-fixtures/missing-signature-fixture.jar"
+    }
+  ],
+  "compiler": "javac --release 17, Microsoft OpenJDK 17.0.20"
+}

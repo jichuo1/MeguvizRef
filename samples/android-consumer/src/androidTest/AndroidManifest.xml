@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- AGP applies its configured runner override to the first instrumentation. -->
+    <instrumentation android:name="example.meguviz.ContractInstrumentation"
+        android:targetPackage="example.meguviz" android:functionalTest="false"
+        android:handleProfiling="false" />
+    <instrumentation android:name="example.meguviz.BenchmarkInstrumentation"
+        android:targetPackage="example.meguviz" android:functionalTest="false"
+        android:handleProfiling="false" />
+</manifest>

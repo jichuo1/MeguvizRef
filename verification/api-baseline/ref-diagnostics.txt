@@ -1,0 +1,70 @@
+Compiled from "CodeIdentities.java"
+public final class io.github.jichuo1.meguviz.ref.diagnostics.CodeIdentities {
+  public static io.github.jichuo1.meguviz.ref.api.evidence.CodeIdentity hashFiles(java.util.Map<java.lang.String, java.nio.file.Path>, java.lang.String, java.lang.String) throws java.io.IOException;
+}
+Compiled from "FileReceiptStore.java"
+public final class io.github.jichuo1.meguviz.ref.diagnostics.FileReceiptStore implements io.github.jichuo1.meguviz.ref.spi.ReceiptStore {
+  public io.github.jichuo1.meguviz.ref.diagnostics.FileReceiptStore(java.nio.file.Path, int) throws java.io.IOException;
+  public synchronized java.util.Optional<byte[]> read(java.lang.String) throws java.io.IOException;
+  public synchronized void write(java.lang.String, byte[]) throws java.io.IOException;
+}
+Compiled from "IndependentVerifier.java"
+public final class io.github.jichuo1.meguviz.ref.diagnostics.IndependentVerifier {
+  public static io.github.jichuo1.meguviz.ref.diagnostics.IndependentVerifier$Status verify(java.lang.ClassLoader, io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor, int, int);
+  public static io.github.jichuo1.meguviz.ref.diagnostics.IndependentVerifier$Status verifyFiniteUniverse(java.lang.Class<?>, io.github.jichuo1.meguviz.ref.api.descriptor.MemberKind, java.util.List<io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor>);
+}
+Compiled from "IndependentVerifier.java"
+public final class io.github.jichuo1.meguviz.ref.diagnostics.IndependentVerifier$Status extends java.lang.Enum<io.github.jichuo1.meguviz.ref.diagnostics.IndependentVerifier$Status> {
+  public static final io.github.jichuo1.meguviz.ref.diagnostics.IndependentVerifier$Status VERIFIED;
+  public static final io.github.jichuo1.meguviz.ref.diagnostics.IndependentVerifier$Status MISMATCH;
+  public static final io.github.jichuo1.meguviz.ref.diagnostics.IndependentVerifier$Status UNAVAILABLE;
+  public static io.github.jichuo1.meguviz.ref.diagnostics.IndependentVerifier$Status[] values();
+  public static io.github.jichuo1.meguviz.ref.diagnostics.IndependentVerifier$Status valueOf(java.lang.String);
+}
+Compiled from "MemoryReceiptStore.java"
+public final class io.github.jichuo1.meguviz.ref.diagnostics.MemoryReceiptStore implements io.github.jichuo1.meguviz.ref.spi.ReceiptStore {
+  public io.github.jichuo1.meguviz.ref.diagnostics.MemoryReceiptStore(int);
+  public synchronized java.util.Optional<byte[]> read(java.lang.String);
+  public synchronized void write(java.lang.String, byte[]);
+}
+Compiled from "PersistentResolutions.java"
+public final class io.github.jichuo1.meguviz.ref.diagnostics.PersistentResolutions {
+  public static io.github.jichuo1.meguviz.ref.diagnostics.PersistentResolutions$LoadResult restore(io.github.jichuo1.meguviz.ref.spi.ReceiptStore, java.lang.String, io.github.jichuo1.meguviz.ref.api.evidence.CodeIdentity, io.github.jichuo1.meguviz.ref.api.query.AccessPolicy, java.lang.ClassLoader, io.github.jichuo1.meguviz.ref.scope.CodeScope);
+}
+Compiled from "PersistentResolutions.java"
+public final class io.github.jichuo1.meguviz.ref.diagnostics.PersistentResolutions$LoadResult {
+  public io.github.jichuo1.meguviz.ref.diagnostics.PersistentResolutions$Status status();
+  public java.lang.String reason();
+  public java.util.Optional<io.github.jichuo1.meguviz.ref.api.result.ResolutionResult> resolution();
+}
+Compiled from "PersistentResolutions.java"
+public final class io.github.jichuo1.meguviz.ref.diagnostics.PersistentResolutions$Status extends java.lang.Enum<io.github.jichuo1.meguviz.ref.diagnostics.PersistentResolutions$Status> {
+  public static final io.github.jichuo1.meguviz.ref.diagnostics.PersistentResolutions$Status REBOUND;
+  public static final io.github.jichuo1.meguviz.ref.diagnostics.PersistentResolutions$Status MISS;
+  public static final io.github.jichuo1.meguviz.ref.diagnostics.PersistentResolutions$Status INVALID_RECORD;
+  public static final io.github.jichuo1.meguviz.ref.diagnostics.PersistentResolutions$Status STALE_IDENTITY;
+  public static final io.github.jichuo1.meguviz.ref.diagnostics.PersistentResolutions$Status POLICY_MISMATCH;
+  public static final io.github.jichuo1.meguviz.ref.diagnostics.PersistentResolutions$Status IO_FAILURE;
+  public static final io.github.jichuo1.meguviz.ref.diagnostics.PersistentResolutions$Status UNAVAILABLE;
+  public static final io.github.jichuo1.meguviz.ref.diagnostics.PersistentResolutions$Status CANCELLED;
+  public static io.github.jichuo1.meguviz.ref.diagnostics.PersistentResolutions$Status[] values();
+  public static io.github.jichuo1.meguviz.ref.diagnostics.PersistentResolutions$Status valueOf(java.lang.String);
+}
+Compiled from "ReceiptJson.java"
+public final class io.github.jichuo1.meguviz.ref.diagnostics.ReceiptJson {
+  public static byte[] encode(io.github.jichuo1.meguviz.ref.diagnostics.StoredResolution);
+  public static io.github.jichuo1.meguviz.ref.diagnostics.StoredResolution decode(byte[]);
+  public static byte[] explain(io.github.jichuo1.meguviz.ref.api.evidence.ResolutionReceipt);
+}
+Compiled from "StoredResolution.java"
+public final class io.github.jichuo1.meguviz.ref.diagnostics.StoredResolution {
+  public static final int SCHEMA_MAJOR;
+  public static final int SCHEMA_MINOR;
+  public io.github.jichuo1.meguviz.ref.diagnostics.StoredResolution(io.github.jichuo1.meguviz.ref.api.evidence.CodeIdentity, io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor, io.github.jichuo1.meguviz.ref.api.query.AccessPolicy, int, int);
+  public io.github.jichuo1.meguviz.ref.api.evidence.CodeIdentity identity();
+  public io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor descriptor();
+  public io.github.jichuo1.meguviz.ref.api.query.AccessPolicy accessPolicy();
+  public int requiredModifiers();
+  public int forbiddenModifiers();
+  public java.lang.String queryFingerprint();
+}
