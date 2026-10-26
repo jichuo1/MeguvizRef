@@ -15,6 +15,7 @@
 | 文档 | 内容 |
 |---|---|
 | [构建与验证](development.md) | 工具链、验证命令和发布流程 |
+| [发布到 Maven Central](publishing-central.md) | 命名空间验证、签名与上传步骤 |
 | [兼容性](api/version-policy.md) | API、SPI、持久化格式及二进制兼容检查 |
 | [1.0.0 发布说明](releases/1.0.0.md) | 版本功能、验证范围和下载内容 |
 
