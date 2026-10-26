@@ -27,7 +27,8 @@ jobs:
           cache-read-only: ${{ github.event_name == 'pull_request' }}
       - uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
         with:
-          packages: 'platforms;android-37 build-tools;37.0.0'
+          cmdline-tools-version: '15859902'
+          packages: 'platforms;android-37.0 build-tools;37.0.0'
           log-accepted-android-sdk-licenses: false
       - name: Contracts, published consumers, ABI, lint and R8 in one build
         run: bash gradlew -Pmeguviz.profile=android verifyHost verifyAndroid --build-cache --no-daemon --console=plain

@@ -28,7 +28,8 @@ jobs:
           test "$version" = "$(printf '%s' "$version" | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$')"
       - uses: android-actions/setup-android@9fc6c4e9069bf8d3d10b2204b1fb8f6ef7065407 # v3
         with:
-          packages: 'platforms;android-37 build-tools;37.0.0'
+          cmdline-tools-version: '15859902'
+          packages: 'platforms;android-37.0 build-tools;37.0.0'
           log-accepted-android-sdk-licenses: false
       - name: Verify and package once
         run: bash gradlew -Pmeguviz.profile=android packageRelease --build-cache --no-daemon --console=plain
