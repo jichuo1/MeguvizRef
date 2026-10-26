@@ -4,17 +4,25 @@
 [![Release](https://img.shields.io/github/v/release/jichuo1/MeguvizRef)](https://github.com/jichuo1/MeguvizRef/releases)
 [![JitPack](https://jitpack.io/v/jichuo1/MeguvizRef.svg)](https://jitpack.io/#jichuo1/MeguvizRef)
 
-Java 17 成员解析、作用域生命周期和不持有 receiver 的反射调用计划。核心模块没有第三方运行时依赖；诊断和 Android 支持为可选模块。当前稳定版本 **1.0.0**，许可证 Apache-2.0。
+面向 Java 17 与 Android 的反射工具库，提供成员解析、作用域生命周期和不持有接收对象的调用计划。
 
-## 安装
+**稳定版本：1.0.0 · Java 17+ · Android API 27+ · Apache-2.0**
 
-推荐使用本仓库的公开 Maven 仓库，无需令牌或登录。这里只开放本库 group，避免覆盖其他依赖来源：
+## 模块
+
+| 模块 | 功能 | 运行时依赖 |
+|---|---|---|
+| `meguviz-ref-core` | 描述符、精确与结构查询、作用域、调用计划 | 无第三方依赖 |
+| `meguviz-ref-diagnostics` | 结构化诊断、代码身份、解析结果持久化 | core |
+| `meguviz-ref-android` | Android 平台与代码身份辅助功能 | core |
+
+## 快速开始
+
+在 `settings.gradle.kts` 中加入公开 Maven 仓库：
 
 ```kotlin
-// settings.gradle.kts
 dependencyResolutionManagement {
     repositories {
-        google()
         mavenCentral()
         maven("https://raw.githubusercontent.com/jichuo1/MeguvizRef/maven/") {
             content { includeGroup("io.github.jichuo1.meguviz") }
@@ -23,52 +31,18 @@ dependencyResolutionManagement {
 }
 ```
 
+在模块的 `build.gradle.kts` 中引入核心库：
+
 ```kotlin
-// build.gradle.kts
 dependencies {
     implementation("io.github.jichuo1.meguviz:meguviz-ref-core:1.0.0")
-    // 可选：结构化诊断与持久化收据
-    implementation("io.github.jichuo1.meguviz:meguviz-ref-diagnostics:1.0.0")
-    // 可选：Android API 27+ 辅助功能
-    implementation("io.github.jichuo1.meguviz:meguviz-ref-android:1.0.0")
 }
 ```
 
-Maven 消费者：
+该仓库无需认证。可选模块、Maven XML 与 JitPack 配置见[安装说明](docs/installation.md)。当前未发布到 Maven Central。
 
-```xml
-<repositories>
-  <repository>
-    <id>meguviz</id>
-    <url>https://raw.githubusercontent.com/jichuo1/MeguvizRef/maven/</url>
-  </repository>
-</repositories>
-<dependencies>
-  <dependency>
-    <groupId>io.github.jichuo1.meguviz</groupId>
-    <artifactId>meguviz-ref-core</artifactId>
-    <version>1.0.0</version>
-  </dependency>
-</dependencies>
-```
+## 使用示例
 
-JitPack 使用独立坐标，不应与上述坐标混用：
-
-```kotlin
-repositories {
-    maven("https://jitpack.io") {
-        content { includeGroup("com.github.jichuo1.MeguvizRef") }
-    }
-}
-dependencies {
-    implementation("com.github.jichuo1.MeguvizRef:meguviz-ref-core:1.0.0")
-    // 同组另有 meguviz-ref-diagnostics 与 meguviz-ref-android
-}
-```
-
-此处的公开 Maven 是 GitHub 托管的标准 Maven 仓库，**不表示已发布到 Maven Central**。
-
-## 使用
 
 ```java
 import io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor;
@@ -86,27 +60,20 @@ try (CodeScope scope = CodeScope.open(String.class.getClassLoader())) {
 }
 ```
 
-完整可编译用例在 [Java 消费者](samples/jvm-consumer) 和 [Kotlin 消费者](samples/kotlin-consumer)。公开 API 基线和旧版编译客户端在 `verification/`。
+更多可编译示例：[Java](samples/jvm-consumer)、[Kotlin](samples/kotlin-consumer)、[Android](samples/android-consumer)。
 
-## 行为边界
+## 关键行为
 
-- 结构查询默认要求唯一匹配；预算耗尽或覆盖不完整不能证明唯一。
-- `CodeScope.close()` 拒绝新调用，已进入的目标调用可以结束；旧 token 不能跨 scope/代际复用。
-- 默认遵循 Java 访问检查。主动请求抑制访问检查仍可能失败。
-- `exportRaw()` 将反射对象所有权交给调用方，其生命周期不再由 scope 完全控制。
-- Android 模块支持 API 27+。库不提供 Hook 引擎、DEX 搜索后端、KavaRef 二进制命名空间兼容或宿主版本适配。
-- 已有设备和消费者集成验收范围见 [1.0.0 发布说明](docs/releases/1.0.0.md)。CI 构建通过不代表所有设备或宿主功能都得到运行时认证。
+- 结构查询默认要求唯一匹配；覆盖不完整或预算耗尽时不会报告唯一成功。
+- 作用域关闭后拒绝新调用，已经进入的目标方法可以完成。
+- 默认遵循 Java 访问检查；显式请求调整可访问性仍可能被平台拒绝。
+- `exportRaw()` 返回的反射对象由调用方管理，关闭作用域不能撤销其外部引用。
+- 性能取决于查询方式、缓存命中率和运行环境；不承诺所有调用都比直接反射更快。
 
-## 构建与校验
+## 文档
 
-需要 JDK 17。纯 JVM 构建不需要 Android SDK：
+[文档目录](docs/README.md) · [核心 API](docs/api/core-contracts.md) · [构建与验证](docs/development.md) · [1.0.0 发布说明](docs/releases/1.0.0.md)
 
-```sh
-bash gradlew verifyHost --build-cache --no-daemon
-# Android SDK platform 37；同时执行 lint 与缩减后的消费应用构建
-bash gradlew -Pmeguviz.profile=android verifyHost verifyAndroid --build-cache --no-daemon
-# 相同调用内生成三个模块的 Maven 文件、源码包及 SHA256SUMS
-bash gradlew -Pmeguviz.profile=android packageRelease --build-cache --no-daemon
-```
+## 许可证
 
-CI 仅在 main/PR 的构建相关变动运行；同一分支旧运行会取消。单次 Gradle 调用复用本地发布产物，统一 Gradle 缓存，最多两个 worker。标签发布不重复触发 main CI；同一次构建的字节用于 Release 和 Maven，已有版本禁止覆盖。JitPack 仅编译库、运行核心合同并安装 Maven 制品，不构建示例或重复完整发布流水线。
+本项目使用 [Apache License 2.0](LICENSE)，版权与第三方说明见 [NOTICE](NOTICE)。

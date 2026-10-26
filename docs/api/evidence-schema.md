@@ -6,4 +6,7 @@
 
 独立复验器不调用核心选择器：使用公开反射枚举，独立形成primitive/array/object描述并匹配owner、完整参数/返回与flags。签名缺类或公开API不可用产生UNAVAILABLE；不将未完成枚举归类成不存在。
 
-实际测试见 ref-diagnostics/src/test/java 下 DiagnosticsContractTest；运行回执在 verification/commands 与 ref-diagnostics/build/test-results/contracts。
+测试实现见 [DiagnosticsContractTest](../../ref-diagnostics/src/test/java/io/github/jichuo1/meguviz/ref/diagnostics/DiagnosticsContractTest.java)；执行结果位于 `ref-diagnostics/build/test-results/contracts/`。
+
+
+[返回文档目录](../README.md)

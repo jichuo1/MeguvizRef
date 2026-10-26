@@ -6,3 +6,16 @@ __pycache__/
 verification/host-gate/
 verification/compatibility-clients/receipt.json
 .publish-maven/
+
+# Local credentials, signing material and runtime evidence
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.p12
+*.pem
+*.hprof
+*.jfr
+verification/device-gate/
+verification/commands/

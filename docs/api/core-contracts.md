@@ -1,6 +1,6 @@
-# 核心 v0.1 合同
+# 核心 API 与行为约定
 
-实现为 Java17 字节码、零第三方生产依赖；Kotlin 消费者通过正常 Java 互操作使用。API/SPI 尚以本次候选 API dump 为冻结依据，未远程发布。
+实现为 Java17 字节码、零第三方生产依赖；Kotlin 消费者通过正常 Java 互操作使用。公开签名基线和兼容性检查见[版本与兼容性](version-policy.md)。
 
 `TypeDescriptor.of` 校验 JVM 类型语法、void 位置、255 维数组和大小预算。`MemberDescriptor` 保存真实声明 owner、成员种类、名称、完整参数及返回/字段类型。`QuerySpec.exact` 为 portable 完整描述；`QuerySpec.builder(Class, kind)` 及 Class/实参便捷入口是 runtime-only，缓存按 Class 对象身份隔离，不将相同类名跨 loader 合并。实参入口只保存参数的 Class 或 null，不保留 receiver/对象值。
 
@@ -10,7 +10,7 @@
 
 新查询默认 `UNIQUE`：只有完整可见域中的单个匹配才成功；两个实际验证的不同成员可直接证明歧义。`FIRST` 保留公开反射枚举顺序，找到即停，`RESOLVED` 并不表示 coverage 完整或唯一。`ALL` 输出达到 limit 时保守标 `PARTIAL`。链接失败、预算、取消、Provider 不完整都不能提升成完整负结论。`requireSingle()` 只接受 `RESOLVED`，不会吞目标返回 null 或目标异常。
 
-`LegacyBilCompatibility` 是 primitive 先 box 后 `isInstance`、null 只接受引用类型；`JAVA_INVOCATION` 允许反射的 primitive widening，禁止 narrowing/boolean 混用。不实现 Java 编译器重载决议，不隐式打包 varargs。
+`CompatibilityPolicy.LEGACY_BIL` 使用严格装箱匹配，null 只接受引用类型；`JAVA_INVOCATION` 允许反射的 primitive widening，禁止 narrowing/boolean 混用。不实现 Java 编译器重载决议，不隐式打包 varargs。
 
 结构筛选按 name/static/arity/flags 先短路，再建立一次参数快照。私有数组不会经 getter 外泄。精确查询不创建全类 schema；schema 缓存有界。query cache 只缓存完整且稳定的成功，默认没有负缓存。实际 metadata 计数不包含 VM 枚举内部分配、也不等于时间收益。
 
@@ -22,6 +22,9 @@ MethodPlan、FieldPlan、ConstructorPlan 分离，无 receiver 字段。调用�
 
 `close`: OPEN→RETIRING→CLOSED。同步线性化点拒绝新调用并清理缓存、槽位及 loader；已进入的方法持自己的局部 Member，可完成后释放。没有无界等待。重复 close 幂等。Provider 在全部在途解析/调用排空后关闭；排空时的 Provider close 异常记录 `closeFailureType()`，不盖住目标异常。没有在途工作时显式 close 的关闭失败正常抛出。
 
-`advanceCodeEpoch(reason)` 清除本进程绑定/缓存并使旧 token 失效；Long.MAX_VALUE 换新 scope identity，再从 0 计数。code epoch 变更同时使当前强代码指纹失效，Provider 需要携带新内容身份的新 scope。作用域之间没有窗口、View 或 UI scheduler 的耦合。
+`advanceCodeEpoch(reason)` 清除本进程绑定/缓存并使旧 token 失效；Long.MAX_VALUE 换新 scope identity，再从 0 计数。code epoch 变更同时使当前强代码指纹失效，Provider 需要携带新内容身份的新 scope。作用域不管理 UI 生命周期。
 
 单线程调用不启动任何工作线程。single-flight 在同键 miss 上共享工作，等待最多 2000ms、并发 flight 上限 min(capacity,256)。同线程重入和跨线程等待环返回明确不完整结果；一个等待者中断不取消拥有者，close 完成等待者而不抢占已进入 Provider/目标。provider/目标代码不在全局锁内执行。
+
+
+[返回文档目录](../README.md)
