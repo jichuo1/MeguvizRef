@@ -1,6 +1,7 @@
 """Validate and package the three local Maven publications from the tested build."""
 import argparse
 import hashlib
+import io
 import json
 from pathlib import Path
 import shutil
@@ -34,6 +35,11 @@ def package(version):
             names = archive.namelist()
             if not ("classes.jar" in names if module == "android" else any(n.endswith(".class") for n in names)):
                 raise ValueError(f"Empty publication: {artifact}")
+            if module == "android":
+                with zipfile.ZipFile(io.BytesIO(archive.read("classes.jar"))) as classes:
+                    names = classes.namelist()
+            if not {"META-INF/LICENSE", "META-INF/NOTICE"}.issubset(names):
+                raise ValueError(f"Missing license notices: {artifact}")
         selected.extend(files)
         publications[artifact] = {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
     revision = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
