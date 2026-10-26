@@ -1,8 +1,8 @@
 jdk:
   - openjdk17
 before_install:
-  - sdkmanager "cmdline-tools;23.0"
   - yes | sdkmanager --licenses > /dev/null || true
+  - sdkmanager "cmdline-tools;23.0"
   - $ANDROID_HOME/cmdline-tools/23.0/bin/sdkmanager "platforms;android-37.0" "build-tools;37.0.0"
 install:
   - bash gradlew -Pmeguviz.profile=android :ref-core:contractTests :ref-diagnostics:contractTests :ref-core:publishToMavenLocal :ref-diagnostics:publishToMavenLocal :ref-android:publishToMavenLocal --build-cache --no-daemon --console=plain
