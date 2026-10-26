@@ -6,6 +6,7 @@ android {
     defaultConfig { minSdk = 27; consumerProguardFiles("consumer-rules.pro") }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
     publishing { singleVariant("release") { withSourcesJar() } }
+    packaging.resources.excludes.removeAll(setOf("/META-INF/LICENSE", "/META-INF/NOTICE"))
 }
 dependencies { api(project(":ref-core")) }
 dependencyLocking { lockAllConfigurations() }
