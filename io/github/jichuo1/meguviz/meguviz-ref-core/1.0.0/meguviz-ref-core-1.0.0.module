@@ -1,0 +1,80 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "io.github.jichuo1.meguviz",
+    "module": "meguviz-ref-core",
+    "version": "1.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.8.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "meguviz-ref-core-1.0.0.jar",
+          "url": "meguviz-ref-core-1.0.0.jar",
+          "size": 72128,
+          "sha512": "bd1c44378be18ac08f64f55c0785d7bb28f4f6731b609703141c52399f6b94ef0640749a1a98adc8b11d0ca79dde020ceee4ee641807d199a0aada7d7969fffb",
+          "sha256": "3cab2b1fef3414814e32661baca959e4680db0f6fb2535ed1f73b4dc0a478e19",
+          "sha1": "61dd74da9b7772c398a68191c1dd99f0e998ced6",
+          "md5": "12d2da184d1f37e8a44a1f5cef2887ef"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "meguviz-ref-core-1.0.0.jar",
+          "url": "meguviz-ref-core-1.0.0.jar",
+          "size": 72128,
+          "sha512": "bd1c44378be18ac08f64f55c0785d7bb28f4f6731b609703141c52399f6b94ef0640749a1a98adc8b11d0ca79dde020ceee4ee641807d199a0aada7d7969fffb",
+          "sha256": "3cab2b1fef3414814e32661baca959e4680db0f6fb2535ed1f73b4dc0a478e19",
+          "sha1": "61dd74da9b7772c398a68191c1dd99f0e998ced6",
+          "md5": "12d2da184d1f37e8a44a1f5cef2887ef"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "meguviz-ref-core-1.0.0-sources.jar",
+          "url": "meguviz-ref-core-1.0.0-sources.jar",
+          "size": 35935,
+          "sha512": "eb2e228c09cd8e2c61c601898a5b64c00550aa88fed462f6400f6facbbffb9e19597448aceca0ba8cadeeb81c1843fdb725ab60c5c7cee48cd2feff4b042199a",
+          "sha256": "824890bd54fa4c538753092a34cc6662950a3d29a74c07e2bc0e61f4d94d6a38",
+          "sha1": "2b5b79f3e34eac61a758144b5e4187f9d25dbbfc",
+          "md5": "c4eb4bde6ee90ea85633d510caacac3b"
+        }
+      ]
+    }
+  ]
+}

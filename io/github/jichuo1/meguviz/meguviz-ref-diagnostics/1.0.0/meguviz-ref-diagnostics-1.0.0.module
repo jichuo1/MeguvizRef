@@ -1,0 +1,98 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "io.github.jichuo1.meguviz",
+    "module": "meguviz-ref-diagnostics",
+    "version": "1.0.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "9.8.2"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "io.github.jichuo1.meguviz",
+          "module": "meguviz-ref-core",
+          "version": {
+            "requires": "1.0.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "meguviz-ref-diagnostics-1.0.0.jar",
+          "url": "meguviz-ref-diagnostics-1.0.0.jar",
+          "size": 31400,
+          "sha512": "295c844500f2c3885387c10542821aa5e70adbe740bbd3f693a885c3e21ab243444037a2402144126848e035298b18813b2f2b5225b18a7f0ac14095ab232c20",
+          "sha256": "1d9ef3e07dd01414648e0cc0ac6ad92657605636e0bec016f49df7867677371f",
+          "sha1": "4ee61fa2d50d1ef5bf1b88ed3f9a25e1fbf2a202",
+          "md5": "82cec65a2db81053b70af07fe522f7cd"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "io.github.jichuo1.meguviz",
+          "module": "meguviz-ref-core",
+          "version": {
+            "requires": "1.0.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "meguviz-ref-diagnostics-1.0.0.jar",
+          "url": "meguviz-ref-diagnostics-1.0.0.jar",
+          "size": 31400,
+          "sha512": "295c844500f2c3885387c10542821aa5e70adbe740bbd3f693a885c3e21ab243444037a2402144126848e035298b18813b2f2b5225b18a7f0ac14095ab232c20",
+          "sha256": "1d9ef3e07dd01414648e0cc0ac6ad92657605636e0bec016f49df7867677371f",
+          "sha1": "4ee61fa2d50d1ef5bf1b88ed3f9a25e1fbf2a202",
+          "md5": "82cec65a2db81053b70af07fe522f7cd"
+        }
+      ]
+    },
+    {
+      "name": "sourcesElements",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "meguviz-ref-diagnostics-1.0.0-sources.jar",
+          "url": "meguviz-ref-diagnostics-1.0.0-sources.jar",
+          "size": 16885,
+          "sha512": "ad6fca0fc3678619c26b2113ee0f6fa6942467f9eb6f79029a120f6bd77ba97d87d12945970e91e6c6877c6608d13acbbc6c77a5bd8fa14d5d06ae9841a94c87",
+          "sha256": "625c6360976d9432fbf7521abe892ada838f1eaf01a3f7921baa5e277f7945d6",
+          "sha1": "7d6d342348e6fd13dea6da73d7525aefef2ba144",
+          "md5": "039c8496e8c8454eedf3669a7185600d"
+        }
+      ]
+    }
+  ]
+}
