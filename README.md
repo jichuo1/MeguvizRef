@@ -39,10 +39,9 @@ dependencies {
 }
 ```
 
-该仓库无需认证。可选模块、Maven XML 与 JitPack 配置见[安装说明](docs/installation.md)。当前未发布到 Maven Central。
+仓库无需认证，当前未发布到 Maven Central。可选模块、Maven XML 与 JitPack 配置见[安装说明](docs/installation.md)。
 
 ## 使用示例
-
 
 ```java
 import io.github.jichuo1.meguviz.ref.api.descriptor.MemberDescriptor;
@@ -66,9 +65,9 @@ try (CodeScope scope = CodeScope.open(String.class.getClassLoader())) {
 
 - 结构查询默认要求唯一匹配；覆盖不完整或预算耗尽时不会报告唯一成功。
 - 作用域关闭后拒绝新调用，已经进入的目标方法可以完成。
-- 默认遵循 Java 访问检查；显式请求调整可访问性仍可能被平台拒绝。
-- `exportRaw()` 返回的反射对象由调用方管理，关闭作用域不能撤销其外部引用。
-- 性能取决于查询方式、缓存命中率和运行环境；不承诺所有调用都比直接反射更快。
+- 默认遵循 Java 访问检查；显式放宽可访问性仍可能被平台拒绝。
+- `exportRaw()` 返回的反射对象由调用方管理，关闭作用域无法撤销其外部引用。
+- 性能取决于查询方式、缓存命中率和运行环境，不承诺比直接反射更快。
 
 ## 文档
 
